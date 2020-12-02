@@ -2,6 +2,6 @@
   "private": true,
   "name": "advent-of-code",
   "workspaces": [
-    "2020"
+    "aoc-2020"
   ]
 }
