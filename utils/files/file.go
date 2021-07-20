@@ -53,7 +53,7 @@ func ReadFile(day, year int, delimiter string) []string {
 }
 
 func createFile(year, day int, filePath string) {
-	puzzleInput := req.MakeRequest(year, day)
+	puzzleInput := req.GetPuzzleInput(year, day)
 
 	err := ioutil.WriteFile(filePath, []byte(puzzleInput), 0755)
 
