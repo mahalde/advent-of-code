@@ -1,0 +1,26 @@
+package main
+
+import (
+	"fmt"
+	"strconv"
+
+	"github.com/mahalde/advent-of-code/utils/files"
+)
+
+func main() {
+	input := files.ReadFile(year, day, "\n")
+	fmt.Println("Solution Part One: " + strconv.Itoa(solvePart1(input)))
+	fmt.Println("Solution Part Two: " + strconv.Itoa(solvePart2(input)))
+}
+
+func solvePart1(input []string) int {
+	result := 0
+
+	return result
+}
+
+func solvePart2(input []string) int {
+	result := 0
+
+	return result
+}
