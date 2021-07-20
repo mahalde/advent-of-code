@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	input := files.ReadFile(year, day, "\n")
+	input := files.ReadFile(day, year, "\n")
 	fmt.Println("Solution Part One: " + strconv.Itoa(solvePart1(input)))
 	fmt.Println("Solution Part Two: " + strconv.Itoa(solvePart2(input)))
 }
