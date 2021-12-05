@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 
 	"github.com/mahalde/advent-of-code/utils/conv"
 	"github.com/mahalde/advent-of-code/utils/files"
@@ -10,8 +9,8 @@ import (
 
 func main() {
 	input := files.ReadFile(1, 2021, "\n")
-	fmt.Println("Solution Part One: " + strconv.Itoa(solvePart1(input)))
-	fmt.Println("Solution Part Two: " + strconv.Itoa(solvePart2(input)))
+	fmt.Println("Solution Part One:", solvePart1(input))
+	fmt.Println("Solution Part Two:", solvePart2(input))
 }
 
 func solvePart1(input []string) int {

@@ -9,8 +9,8 @@ import (
 
 func main() {
 	input := files.ReadFile(3, 2021, "\n")
-	fmt.Println("Solution Part One: " + strconv.Itoa(solvePart1(input)))
-	fmt.Println("Solution Part Two: " + strconv.Itoa(solvePart2(input)))
+	fmt.Println("Solution Part One:", solvePart1(input))
+	fmt.Println("Solution Part Two:", solvePart2(input))
 }
 
 func solvePart1(input []string) int {
