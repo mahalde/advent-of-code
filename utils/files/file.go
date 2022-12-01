@@ -2,7 +2,6 @@ package files
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strconv"
 	"strings"
@@ -10,13 +9,13 @@ import (
 	"github.com/mahalde/advent-of-code/utils/req"
 )
 
-// Reads content of the input file and returns it in an array, split by the specified delimiter
+// ReadFile reads content of the input file and returns it in an array, split by the specified delimiter
 // If the input file does not exist, it will be created
 func ReadFile(day, year int, delimiter string) []string {
 	currentDay := strconv.Itoa(day)
 	currentYear := strconv.Itoa(year)
 
-	if len(currentDay) == 1 {
+	if day < 10 {
 		currentDay = "0" + currentDay
 	}
 
@@ -28,7 +27,7 @@ func ReadFile(day, year int, delimiter string) []string {
 		fmt.Println("INFO: File already exists, will not create new one")
 	}
 
-	file, err := ioutil.ReadFile(filePath)
+	file, err := os.ReadFile(filePath)
 	if err != nil {
 		panic(err)
 	}
@@ -55,7 +54,7 @@ func ReadFile(day, year int, delimiter string) []string {
 func createFile(year, day int, filePath string) {
 	puzzleInput := req.GetPuzzleInput(year, day)
 
-	err := ioutil.WriteFile(filePath, []byte(puzzleInput), 0755)
+	err := os.WriteFile(filePath, []byte(puzzleInput), 0755)
 
 	if err != nil {
 		panic(err)

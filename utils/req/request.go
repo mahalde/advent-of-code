@@ -3,7 +3,6 @@ package req
 import (
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 
 	"github.com/mahalde/advent-of-code/utils/secrets"
@@ -31,7 +30,7 @@ func GetPuzzleInput(year, day int) string {
 	}
 
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 
 	if err != nil {
 		panic(err)

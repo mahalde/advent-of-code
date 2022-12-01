@@ -16,3 +16,6 @@
 
 # Secrets for api fetching
 */secrets
+
+.idea
+*.DS_Store
