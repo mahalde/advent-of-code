@@ -2,11 +2,10 @@ package files
 
 import (
 	"fmt"
+	"github.com/mahalde/advent-of-code/utils/req"
 	"os"
 	"strconv"
 	"strings"
-
-	"github.com/mahalde/advent-of-code/utils/req"
 )
 
 // ReadFile reads content of the input file and returns it in an array, split by the specified delimiter
@@ -27,13 +26,22 @@ func ReadFile(day, year int, delimiter string) []string {
 		fmt.Println("INFO: File already exists, will not create new one")
 	}
 
+	return readFile(filePath, delimiter)
+}
+
+func readFile(filePath, delimiter string) []string {
+
 	file, err := os.ReadFile(filePath)
 	if err != nil {
 		panic(err)
 	}
 
 	fileContent := string(file)
-	slicedContent := strings.Split(fileContent, delimiter)
+	return ParseFile(fileContent, delimiter)
+}
+
+func ParseFile(content, delimiter string) []string {
+	slicedContent := strings.Split(content, delimiter)
 
 	if delimiter == "\n" {
 		// fetch utils always adds a new line at the end of a file, which could lead to some problems when parsing it

@@ -17,3 +17,8 @@ func ToIntSlice(slice []string) []int {
 
 	return sliceToReturn
 }
+
+func ToInt(str string) int {
+	num, _ := strconv.Atoi(str)
+	return num
+}
