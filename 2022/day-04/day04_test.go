@@ -17,11 +17,11 @@ var (
 func TestPart1(t *testing.T) {
 	solution := solvePart1(input)
 
-	utils.AssertEquals(t, solution, 2)
+	utils.AssertIntEquals(t, solution, 2)
 }
 
 func TestPart2(t *testing.T) {
 	solution := solvePart2(input)
 
-	utils.AssertEquals(t, solution, 4)
+	utils.AssertIntEquals(t, solution, 4)
 }

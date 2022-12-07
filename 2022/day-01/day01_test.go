@@ -17,7 +17,7 @@ var (
 func TestPart1(t *testing.T) {
 	solution := solvePart1(input)
 
-	utils.AssertEquals(t, solution, 24000)
+	utils.AssertIntEquals(t, solution, 24000)
 }
 
 func TestMaxOfSlice(t *testing.T) {
@@ -25,11 +25,11 @@ func TestMaxOfSlice(t *testing.T) {
 
 	got := maxOfSlice(slice)
 
-	utils.AssertEquals(t, got, 5400)
+	utils.AssertIntEquals(t, got, 5400)
 }
 
 func TestPart2(t *testing.T) {
 	solution := solvePart2(input)
 
-	utils.AssertEquals(t, solution, 45000)
+	utils.AssertIntEquals(t, solution, 45000)
 }
