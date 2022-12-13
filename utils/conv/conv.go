@@ -1,24 +1,36 @@
 package conv
 
-import "strconv"
+import (
+	"math/big"
+	"strconv"
+)
 
 func ToIntSlice(slice []string) []int {
-	sliceToReturn := []int{}
+	var sliceToReturn []int
 
 	for _, current := range slice {
-		convertedString, err := strconv.Atoi(current)
+		sliceToReturn = append(sliceToReturn, ToInt(current))
+	}
 
-		if err != nil {
-			panic(err)
-		}
+	return sliceToReturn
+}
 
-		sliceToReturn = append(sliceToReturn, convertedString)
+func ToBigIntSlice(slice []string) []*big.Int {
+	var sliceToReturn []*big.Int
+
+	for _, current := range slice {
+		sliceToReturn = append(sliceToReturn, big.NewInt(int64(ToInt(current))))
 	}
 
 	return sliceToReturn
 }
 
 func ToInt(str string) int {
-	num, _ := strconv.Atoi(str)
+	num, err := strconv.Atoi(str)
+
+	if err != nil {
+		panic(err)
+	}
+
 	return num
 }
