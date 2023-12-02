@@ -15,7 +15,6 @@ else
   cp template $YEAR/day-$DAY/day$DAY.go
   touch $YEAR/day-$DAY/README.md
   go run cmd/get_puzzle_description.go $YEAR $DAY >$YEAR/day-$DAY/README.md
-
 fi
 
 echo "Files successfully created :)"

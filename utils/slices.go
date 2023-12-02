@@ -21,3 +21,12 @@ func Max(slice []int) int {
 
 	return max
 }
+
+func Sum(slice []int) int {
+	sum := 0
+	for _, num := range slice {
+		sum += num
+	}
+
+	return sum
+}
