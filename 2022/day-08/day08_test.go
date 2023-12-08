@@ -2,7 +2,7 @@ package main
 
 import (
 	_ "embed"
-	"github.com/mahalde/advent-of-code/utils"
+	"github.com/mahalde/advent-of-code/utils/assert"
 	"github.com/mahalde/advent-of-code/utils/files"
 	"testing"
 )
@@ -16,7 +16,7 @@ var (
 
 func TestPart1(t *testing.T) {
 	solution := solvePart1(input)
-	utils.AssertIntEquals(t, solution, 21)
+	assert.IntEquals(t, solution, 21)
 }
 
 func TestFindScenicScore(t *testing.T) {
@@ -24,16 +24,16 @@ func TestFindScenicScore(t *testing.T) {
 
 	t.Run("first", func(t *testing.T) {
 		got := findScenicScore(matrix, 2, 1, 5)
-		utils.AssertIntEquals(t, got, 4)
+		assert.IntEquals(t, got, 4)
 	})
 
 	t.Run("second", func(t *testing.T) {
 		got := findScenicScore(matrix, 2, 3, 5)
-		utils.AssertIntEquals(t, got, 8)
+		assert.IntEquals(t, got, 8)
 	})
 }
 
 func TestPart2(t *testing.T) {
 	solution := solvePart2(input)
-	utils.AssertIntEquals(t, solution, 8)
+	assert.IntEquals(t, solution, 8)
 }

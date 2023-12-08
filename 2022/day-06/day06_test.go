@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/mahalde/advent-of-code/utils"
+	"github.com/mahalde/advent-of-code/utils/assert"
 	"testing"
 )
 
@@ -32,7 +32,7 @@ func TestPart1(t *testing.T) {
 		t.Run(test.input, func(t *testing.T) {
 			got := solvePart1(test.input)
 
-			utils.AssertIntEquals(t, got, test.solution)
+			assert.IntEquals(t, got, test.solution)
 		})
 	}
 }
@@ -42,7 +42,7 @@ func TestPart2(t *testing.T) {
 		t.Run(test.input, func(t *testing.T) {
 			got := solvePart2(test.input)
 
-			utils.AssertIntEquals(t, got, test.solution)
+			assert.IntEquals(t, got, test.solution)
 		})
 	}
 }

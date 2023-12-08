@@ -2,7 +2,7 @@ package main
 
 import (
 	_ "embed"
-	"github.com/mahalde/advent-of-code/utils"
+	"github.com/mahalde/advent-of-code/utils/assert"
 	"github.com/mahalde/advent-of-code/utils/files"
 	"testing"
 )
@@ -21,11 +21,11 @@ var (
 func TestPart1(t *testing.T) {
 	solution := solvePart1(input1)
 
-	utils.AssertIntEquals(t, solution, 142)
+	assert.IntEquals(t, solution, 142)
 }
 
 func TestPart2(t *testing.T) {
 	solution := solvePart2(input2)
 
-	utils.AssertIntEquals(t, solution, 281)
+	assert.IntEquals(t, solution, 281)
 }

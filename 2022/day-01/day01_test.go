@@ -2,7 +2,7 @@ package main
 
 import (
 	_ "embed"
-	"github.com/mahalde/advent-of-code/utils"
+	"github.com/mahalde/advent-of-code/utils/assert"
 	"github.com/mahalde/advent-of-code/utils/files"
 	"testing"
 )
@@ -17,7 +17,7 @@ var (
 func TestPart1(t *testing.T) {
 	solution := solvePart1(input)
 
-	utils.AssertIntEquals(t, solution, 24000)
+	assert.IntEquals(t, solution, 24000)
 }
 
 func TestMaxOfSlice(t *testing.T) {
@@ -25,11 +25,11 @@ func TestMaxOfSlice(t *testing.T) {
 
 	got := maxOfSlice(slice)
 
-	utils.AssertIntEquals(t, got, 5400)
+	assert.IntEquals(t, got, 5400)
 }
 
 func TestPart2(t *testing.T) {
 	solution := solvePart2(input)
 
-	utils.AssertIntEquals(t, solution, 45000)
+	assert.IntEquals(t, solution, 45000)
 }

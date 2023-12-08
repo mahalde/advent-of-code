@@ -1,6 +1,6 @@
 module github.com/mahalde/advent-of-code
 
-go 1.19
+go 1.21
 
 require (
 	github.com/JohannesKaufmann/html-to-markdown v1.3.0

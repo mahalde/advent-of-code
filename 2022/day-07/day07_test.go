@@ -2,7 +2,7 @@ package main
 
 import (
 	_ "embed"
-	"github.com/mahalde/advent-of-code/utils"
+	"github.com/mahalde/advent-of-code/utils/assert"
 	"github.com/mahalde/advent-of-code/utils/files"
 	"reflect"
 	"testing"
@@ -17,12 +17,12 @@ var (
 
 func TestPart1(t *testing.T) {
 	solution := solvePart1(input)
-	utils.AssertIntEquals(t, solution, 95437)
+	assert.IntEquals(t, solution, 95437)
 }
 
 func TestPart2(t *testing.T) {
 	solution := solvePart2(input)
-	utils.AssertIntEquals(t, solution, 24933642)
+	assert.IntEquals(t, solution, 24933642)
 }
 
 func TestDirectory(t *testing.T) {
@@ -61,11 +61,11 @@ func TestDirectory(t *testing.T) {
 		file := &File{name: "Hello World.txt"}
 		dir.children = append(dir.children, file)
 
-		utils.AssertIntEquals(t, len(dir.children), 1)
+		assert.IntEquals(t, len(dir.children), 1)
 
 		dir.AddChild(file)
 
-		utils.AssertIntEquals(t, len(dir.children), 1)
+		assert.IntEquals(t, len(dir.children), 1)
 	})
 
 	t.Run("gets the directory size", func(t *testing.T) {
@@ -76,8 +76,8 @@ func TestDirectory(t *testing.T) {
 		dir.AddChild(&File{size: 15})
 		dir.AddChild(otherDir)
 
-		utils.AssertIntEquals(t, otherDir.Size(), 35)
-		utils.AssertIntEquals(t, dir.Size(), 50)
+		assert.IntEquals(t, otherDir.Size(), 35)
+		assert.IntEquals(t, dir.Size(), 50)
 	})
 
 	t.Run("it sets the parent on adding a child dir", func(t *testing.T) {
@@ -155,7 +155,7 @@ func TestParseLine(t *testing.T) {
 			t.Errorf("child is not a file, but type %t", child)
 		}
 
-		utils.AssertIntEquals(t, file.Size(), 100)
-		utils.AssertStringEquals(t, file.Name(), "hello.txt")
+		assert.IntEquals(t, file.Size(), 100)
+		assert.StringEquals(t, file.Name(), "hello.txt")
 	})
 }

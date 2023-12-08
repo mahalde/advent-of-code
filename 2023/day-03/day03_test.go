@@ -8,7 +8,7 @@ import (
 )
 
 var (
-	//go:embed testdata/data0
+	//go:embed testdata/data
 	file string
 
 	input = files.ParseFile(file, "\n")
@@ -17,11 +17,11 @@ var (
 func TestPart1(t *testing.T) {
 	solution := solvePart1(input)
 
-	assert.IntEquals(t, solution, 8)
+	assert.IntEquals(t, solution, 4361)
 }
 
 func TestPart2(t *testing.T) {
 	solution := solvePart2(input)
 
-	assert.IntEquals(t, solution, 2286)
+	assert.IntEquals(t, solution, 467835)
 }

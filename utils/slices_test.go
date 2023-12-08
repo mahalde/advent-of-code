@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"github.com/mahalde/advent-of-code/utils/assert"
 	"math"
 	"reflect"
 	"testing"
@@ -33,7 +34,7 @@ func TestMax(t *testing.T) {
 		t.Run(fmt.Sprint(i+1), func(t *testing.T) {
 			got := Max(test.slice)
 
-			AssertIntEquals(t, got, test.max)
+			assert.IntEquals(t, got, test.max)
 		})
 	}
 }
