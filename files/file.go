@@ -26,12 +26,12 @@ func ReadAndParseFile(path, delimiter string) []string {
 // ParseFile parses the content of a file and splits it by the specified delimiter
 func ParseFile(content, delimiter string) []string {
 	slicedContent := strings.Split(content, delimiter)
+	lastElement := slicedContent[len(slicedContent)-1]
 
-	if slicedContent[len(slicedContent)-1] == delimiter {
+	if lastElement == delimiter || lastElement == "" {
 		return slicedContent[:len(slicedContent)-1]
 	}
 
-	lastElement := slicedContent[len(slicedContent)-1]
 	slicedContent[len(slicedContent)-1] = strings.TrimSuffix(lastElement, delimiter)
 
 	return slicedContent
