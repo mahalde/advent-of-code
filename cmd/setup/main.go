@@ -207,7 +207,7 @@ func createFolderStructure(year, day string) error {
 
 	// Create empty test_input.txt
 	testInputPath := fmt.Sprintf("%s/test_input.txt", dayPath)
-	err = os.WriteFile(testInputPath, []byte(""), 0644)
+	err = os.WriteFile(testInputPath, []byte("\n"), 0644)
 	if err != nil {
 		return fmt.Errorf("Error creating test_input.txt: %v\n", err)
 	}

@@ -32,7 +32,7 @@ func ParseFile(content, delimiter string) []string {
 		return slicedContent[:len(slicedContent)-1]
 	}
 
-	slicedContent[len(slicedContent)-1] = strings.TrimSuffix(lastElement, delimiter)
+	slicedContent[len(slicedContent)-1] = strings.TrimRight(lastElement, delimiter+"\n")
 
 	return slicedContent
 }
