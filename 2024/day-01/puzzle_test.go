@@ -17,10 +17,10 @@ var (
 
 func TestSolvePart1(t *testing.T) {
 	solution := SolvePart1(input)
-	assert.IntEquals(t, solution, 11)
+	assert.Equals(t, solution, 11)
 }
 
 func TestSolvePart2(t *testing.T) {
 	solution := SolvePart2(input)
-	assert.IntEquals(t, solution, 31)
+	assert.Equals(t, solution, 31)
 }

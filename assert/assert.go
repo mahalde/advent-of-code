@@ -2,19 +2,11 @@ package assert
 
 import "testing"
 
-func IntEquals(t testing.TB, got, want int) {
+func Equals[T comparable](t testing.TB, got, want T) {
 	t.Helper()
 
 	if got != want {
-		t.Errorf("got %d, want %d", got, want)
-	}
-}
-
-func StringEquals(t testing.TB, got, want string) {
-	t.Helper()
-
-	if got != want {
-		t.Errorf("got %q, want %q", got, want)
+		t.Errorf("got %v, want %v", got, want)
 	}
 }
 
