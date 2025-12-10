@@ -1,10 +1,12 @@
 package matrix_test
 
 import (
+	"slices"
 	"testing"
 
 	"github.com/mahalde/advent-of-code/assert"
 	"github.com/mahalde/advent-of-code/matrix"
+	"github.com/mahalde/advent-of-code/ranges"
 )
 
 func TestNewMatrix(t *testing.T) {
@@ -177,4 +179,191 @@ func TestMatrix_EachAround(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestMatrix_FindAdjacentValues(t *testing.T) {
+	t.Run("found horizontal", func(t *testing.T) {
+		m := matrix.NewMatrix[int](3, 3)
+
+		for y := 0; y < 3; y++ {
+			for x := 0; x < 3; x++ {
+				m.Set(x, y, y*3+x)
+			}
+		}
+
+		adjacentValues, found := m.FindAdjacentValues([]int{3, 4, 5})
+		expected, _ := ranges.NewRange2D(0, 2, 1, 1)
+		assert.True(t, found)
+		assert.Equals(t, len(adjacentValues), 1)
+		assert.True(t, adjacentValues[0].Equals(expected))
+	})
+
+	t.Run("found vertical", func(t *testing.T) {
+		m := matrix.NewMatrix[int](3, 3)
+
+		for y := 0; y < 3; y++ {
+			for x := 0; x < 3; x++ {
+				m.Set(x, y, y*3+x)
+			}
+		}
+
+		adjacentValues, found := m.FindAdjacentValues([]int{0, 3, 6})
+		expected, _ := ranges.NewRange2D(0, 0, 0, 2)
+		assert.True(t, found)
+		assert.Equals(t, len(adjacentValues), 1)
+		assert.True(t, adjacentValues[0].Equals(expected))
+	})
+
+	t.Run("found diagonal", func(t *testing.T) {
+		m := matrix.NewMatrix[int](3, 3)
+
+		for y := 0; y < 3; y++ {
+			for x := 0; x < 3; x++ {
+				m.Set(x, y, y*3+x)
+			}
+		}
+
+		adjacentValues, found := m.FindAdjacentValues([]int{0, 4, 8})
+		expected, _ := ranges.NewRange2D(0, 2, 0, 2)
+
+		assert.True(t, found)
+		assert.Equals(t, len(adjacentValues), 1)
+		assert.True(t, adjacentValues[0].Equals(expected))
+	})
+
+	t.Run("found multiple", func(t *testing.T) {
+		m := matrix.NewMatrix[int](3, 3)
+
+		for y := 0; y < 3; y++ {
+			for x := 0; x < 3; x++ {
+				m.Set(x, y, y)
+			}
+		}
+
+		adjacentValues, found := m.FindAdjacentValues([]int{0, 1, 2})
+
+		expected1, _ := ranges.NewRange2D(0, 0, 0, 2)
+		expected2, _ := ranges.NewRange2D(1, 1, 0, 2)
+		expected3, _ := ranges.NewRange2D(2, 2, 0, 2)
+		expected4, _ := ranges.NewRange2D(0, 2, 0, 2)
+		expected5, _ := ranges.NewRange2D(2, 0, 0, 2)
+		assert.True(t, found)
+		assert.Equals(t, len(adjacentValues), 5)
+		assert.True(t, slices.ContainsFunc(adjacentValues, func(r *ranges.Range2D) bool {
+			return r.Equals(expected1)
+		}))
+		assert.True(t, slices.ContainsFunc(adjacentValues, func(r *ranges.Range2D) bool {
+			return r.Equals(expected2)
+		}))
+		assert.True(t, slices.ContainsFunc(adjacentValues, func(r *ranges.Range2D) bool {
+			return r.Equals(expected3)
+		}))
+		assert.True(t, slices.ContainsFunc(adjacentValues, func(r *ranges.Range2D) bool {
+			return r.Equals(expected4)
+		}))
+		assert.True(t, slices.ContainsFunc(adjacentValues, func(r *ranges.Range2D) bool {
+			return r.Equals(expected5)
+		}))
+	})
+
+	t.Run("found none", func(t *testing.T) {
+		m := matrix.NewMatrix[int](3, 3)
+
+		for y := 0; y < 3; y++ {
+			for x := 0; x < 3; x++ {
+				m.Set(x, y, y*3+x)
+			}
+		}
+
+		adjacentValues, found := m.FindAdjacentValues([]int{0, 1, 3})
+
+		assert.False(t, found)
+		assert.Equals(t, len(adjacentValues), 0)
+	})
+
+	t.Run("found horizontal backwards", func(t *testing.T) {
+		m := matrix.NewMatrix[int](3, 3)
+
+		for y := 0; y < 3; y++ {
+			for x := 0; x < 3; x++ {
+				m.Set(x, y, y*3+x)
+			}
+		}
+
+		adjacentValues, found := m.FindAdjacentValues([]int{5, 4, 3})
+		expected, _ := ranges.NewRange2D(2, 0, 1, 1)
+
+		assert.True(t, found)
+		assert.Equals(t, len(adjacentValues), 1)
+		assert.True(t, adjacentValues[0].Equals(expected))
+	})
+
+	t.Run("found vertical backwards", func(t *testing.T) {
+		m := matrix.NewMatrix[int](3, 3)
+
+		for y := 0; y < 3; y++ {
+			for x := 0; x < 3; x++ {
+				m.Set(x, y, y*3+x)
+			}
+		}
+
+		adjacentValues, found := m.FindAdjacentValues([]int{6, 3, 0})
+		expected, _ := ranges.NewRange2D(0, 0, 2, 0)
+
+		assert.True(t, found)
+		assert.Equals(t, len(adjacentValues), 1)
+		assert.True(t, adjacentValues[0].Equals(expected))
+	})
+
+	t.Run("found diagonal backwards", func(t *testing.T) {
+		m := matrix.NewMatrix[int](3, 3)
+
+		for y := 0; y < 3; y++ {
+			for x := 0; x < 3; x++ {
+				m.Set(x, y, y*3+x)
+			}
+		}
+
+		adjacentValues, found := m.FindAdjacentValues([]int{8, 4, 0})
+		expected, _ := ranges.NewRange2D(2, 0, 2, 0)
+
+		assert.True(t, found)
+		assert.Equals(t, len(adjacentValues), 1)
+		assert.True(t, adjacentValues[0].Equals(expected))
+	})
+
+	t.Run("found multiple backwards", func(t *testing.T) {
+		m := matrix.NewMatrix[int](3, 3)
+
+		for y := 0; y < 3; y++ {
+			for x := 0; x < 3; x++ {
+				m.Set(x, y, y)
+			}
+		}
+
+		adjacentValues, found := m.FindAdjacentValues([]int{2, 1, 0})
+		expected1, _ := ranges.NewRange2D(0, 0, 0, 2)
+		expected2, _ := ranges.NewRange2D(1, 1, 0, 2)
+		expected3, _ := ranges.NewRange2D(2, 2, 0, 2)
+		expected4, _ := ranges.NewRange2D(0, 2, 0, 2)
+		expected5, _ := ranges.NewRange2D(2, 0, 0, 2)
+
+		assert.True(t, found)
+		assert.Equals(t, len(adjacentValues), 5)
+		assert.True(t, slices.ContainsFunc(adjacentValues, func(r *ranges.Range2D) bool {
+			return r.Equals(expected1)
+		}))
+		assert.True(t, slices.ContainsFunc(adjacentValues, func(r *ranges.Range2D) bool {
+			return r.Equals(expected2)
+		}))
+		assert.True(t, slices.ContainsFunc(adjacentValues, func(r *ranges.Range2D) bool {
+			return r.Equals(expected3)
+		}))
+		assert.True(t, slices.ContainsFunc(adjacentValues, func(r *ranges.Range2D) bool {
+			return r.Equals(expected4)
+		}))
+		assert.True(t, slices.ContainsFunc(adjacentValues, func(r *ranges.Range2D) bool {
+			return r.Equals(expected5)
+		}))
+	})
 }
