@@ -25,3 +25,11 @@ func False(t testing.TB, got bool) {
 		t.Errorf("wanted %v to be false", got)
 	}
 }
+
+func SlicesEqual[T comparable](t *testing.T, got, want []T) {
+	t.Helper()
+	Equals(t, len(got), len(want))
+	for i, v := range got {
+		Equals(t, v, want[i])
+	}
+}

@@ -6,6 +6,7 @@ require (
 	github.com/charmbracelet/bubbles v0.21.0
 	github.com/charmbracelet/bubbletea v1.3.10
 	github.com/joho/godotenv v1.5.1
+	golang.org/x/exp v0.0.0-20220909182711-5c715a9e8561
 )
 
 require (
