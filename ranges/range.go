@@ -12,6 +12,10 @@ func NewRange(start, end int) *Range {
 	}
 }
 
+func (r *Range) Equals(other *Range) bool {
+	return r.Start == other.Start && r.End == other.End
+}
+
 func (r *Range) Contains(v int) bool {
 	return v >= r.Start && v <= r.End
 }
